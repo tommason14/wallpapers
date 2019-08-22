@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd ~/Documents/repos/wallpapers
-wallpapers=($(ls | grep -v '\.sh'))
+wallpapers=($(ls *.{png,jpg}))
 range=${#wallpapers[@]}
 option=$(( $RANDOM % $range ))
 ./make_wallpaper.sh ${wallpapers[$option]}
