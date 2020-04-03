@@ -1,8 +1,20 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 pic=$(basename "$1") # deal with lf passing in whole name
 FILE="$PWD/$pic"
-wal -i "$FILE"
+
+# if a light colourscheme is desired, pass in a '-l', but need the space as 
+# filenames cam be ...-l....
+[[ "$@" == *" -l"* ]] && light=true || light=false
+
+if [[ "$light" == "true" ]] 
+then
+  wal -i "$FILE" -l
+else
+  wal -i "$FILE" 
+fi
+# passing in $light have errors, so can't have wal -i "$FILE" "$light"
+
 # atom
 cp ~/.cache/wal/colors-atom-syntax $HOME/.atom/packages/wal-syntax/styles/colors.less
 # spotify

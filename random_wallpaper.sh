@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 cd ~/Documents/repos/wallpapers
 wallpapers=($(ls *.{png,jpg}))
@@ -15,4 +15,5 @@ get_choice(){
 }
 
 choice=$(get_choice)
-./make_wallpaper.sh ${wallpapers[$choice]}
+# if -l given for a light wallpaper, then needs passing on
+./make_wallpaper.sh ${wallpapers[$choice]} "$@"
