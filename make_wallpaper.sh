@@ -13,7 +13,7 @@ then
 else
   wal -i "$FILE" 
 fi
-# passing in $light have errors, so can't have wal -i "$FILE" "$light"
+# passing in $light gave errors, so can't have wal -i "$FILE" "$light"
 
 # atom
 cp ~/.cache/wal/colors-atom-syntax $HOME/.atom/packages/wal-syntax/styles/colors.less
