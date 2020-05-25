@@ -3,17 +3,10 @@
 pic=$(basename "$1") # deal with lf passing in whole name
 FILE="$PWD/$pic"
 
-# if a light colourscheme is desired, pass in a '-l', but need the space as 
-# filenames cam be ...-l....
-[[ "$@" == *" -l"* ]] && light=true || light=false
+# pass in options to wal, such as -l for a light scheme, -s to skip
+# changing terminal colours etc...
 
-if [[ "$light" == "true" ]] 
-then
-  wal -i "$FILE" -l
-else
-  wal -i "$FILE" 
-fi
-# passing in $light gave errors, so can't have wal -i "$FILE" "$light"
+wal -i "$FILE" "${@:2}"
 
 # atom
 cp ~/.cache/wal/colors-atom-syntax $HOME/.atom/packages/wal-syntax/styles/colors.less
