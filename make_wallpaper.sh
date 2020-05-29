@@ -16,3 +16,5 @@ sed -i '' 's/\#//' $HOME/spicetify_data/Themes/pywal/color.ini
 spicetify update
 # yabai
 pgrep -q yabai && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+# if using pecan Übersicht bar:
+[[ $USER == "tommason" ]] && /Users/tommason/Library/Application\ Support/Übersicht/widgets/pecan/wal-set
