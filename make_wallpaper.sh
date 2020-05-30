@@ -1,12 +1,12 @@
 #!/bin/bash
 
-pic=$(basename "$1") # deal with lf passing in whole name
-FILE="$PWD/$pic"
+# pic=$(basename "$1") # deal with lf passing in whole name
+# FILE="$PWD/$pic"
 
 # pass in options to wal, such as -l for a light scheme, -s to skip
 # changing terminal colours etc...
 
-wal -i "$FILE" "${@:2}"
+wal -i "$1" "${@:2}"
 
 # atom
 cp ~/.cache/wal/colors-atom-syntax $HOME/.atom/packages/wal-syntax/styles/colors.less
@@ -14,7 +14,12 @@ cp ~/.cache/wal/colors-atom-syntax $HOME/.atom/packages/wal-syntax/styles/colors
 cp $HOME/.cache/wal/spicetify_colours.ini $HOME/spicetify_data/Themes/pywal/color.ini
 sed -i '' 's/\#//' $HOME/spicetify_data/Themes/pywal/color.ini
 spicetify update
-# yabai
+# yabai + bar
 pgrep -q yabai && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-# if using pecan Übersicht bar:
-[[ $USER == "tommason" ]] && /Users/tommason/Library/Application\ Support/Übersicht/widgets/pecan/wal-set
+pgrep -q spacebar && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.spacebar"
+
+# spacebar looks odd with white bg, so if -l passed in, write to some file that
+# it was, and switch the colours in spacebarrc
+
+[[ "${@:2}" =~ (-l|-[a-z]l) ]] && echo "light" > ~/.cache/wal/scheme_colours ||
+echo "dark" > ~/.cache/wal/scheme_colours
