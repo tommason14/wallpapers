@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # pic=$(basename "$1") # deal with lf passing in whole name
 # FILE="$PWD/$pic"
