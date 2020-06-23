@@ -13,10 +13,12 @@ cp ~/.cache/wal/colors-atom-syntax $HOME/.atom/packages/wal-syntax/styles/colors
 # spotify
 cp $HOME/.cache/wal/spicetify_colours.ini $HOME/spicetify_data/Themes/pywal/color.ini
 sed -i '' 's/\#//' $HOME/spicetify_data/Themes/pywal/color.ini
-spicetify update
+spicetify update &
 # yabai + bar
-pgrep -q yabai && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-pgrep -q spacebar && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.spacebar"
+pgrep -q yabai && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" &
+pgrep -q spacebar && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.spacebar" &
+
+kitty @ set-colors --all --configured ~/.config/kitty/kitty.conf
 
 # spacebar looks odd with white bg, so if -l passed in, write to some file that
 # it was, and switch the colours in spacebarrc
