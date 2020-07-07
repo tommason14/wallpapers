@@ -14,6 +14,7 @@ cp ~/.cache/wal/colors-atom-syntax $HOME/.atom/packages/wal-syntax/styles/colors
 cp $HOME/.cache/wal/spicetify_colours.ini $HOME/spicetify_data/Themes/pywal/color.ini
 sed -i '' 's/\#//' $HOME/spicetify_data/Themes/pywal/color.ini
 spicetify -q update
+pywalfox update
 # yabai + bar
 pgrep -q yabai && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" &
 pgrep -q spacebar && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.spacebar" &
