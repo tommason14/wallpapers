@@ -5,22 +5,16 @@
 
 wal -i "$1" "${@:2}"
 
-# atom
-cp ~/.cache/wal/colors-atom-syntax $HOME/.atom/packages/wal-syntax/styles/colors.less
 # spotify
 cp $HOME/.cache/wal/spicetify_colours.ini $HOME/spicetify_data/Themes/pywal/color.ini
 sed -i '' 's/\#//' $HOME/spicetify_data/Themes/pywal/color.ini
 spicetify -q update
-command -v pywalfox > /dev/null && pywalfox update
 # yabai + bar
-pgrep -q yabai && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" &
-pgrep -q spacebar && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.spacebar" &
+# pgrep -q yabai && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" &
+# pgrep -q spacebar && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.spacebar" &
 
-# ps aux | grep kitty | grep -qv grep && kitty @ --to unix:/tmp/mykitty set-colors --all --configured ~/.config/kitty/kitty.conf
-ps aux | grep kitty | grep -qv grep && kitty @ set-colors --all --configured ~/.config/kitty/kitty.conf
+# ps aux | grep kitty | grep -qv grep && kitty @ set-colors --all --configured ~/.config/kitty/kitty.conf
 
-# spacebar looks odd with white bg, so if -l passed in, write to some file that
-# it was, and switch the colours in spacebarrc
+$walls/alacritty-colour-export.sh && gsed -i 's/^colors.*/colors: *pywal/' ~/.config/alacritty/alacritty.yml
 
-[[ "${@:2}" =~ (-l|-[a-z]l) ]] && echo "light" > ~/.cache/wal/scheme_colours ||
-echo "dark" > ~/.cache/wal/scheme_colours
+command -v pywalfox >& /dev/null && pywalfox update
