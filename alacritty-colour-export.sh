@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
-CFG="$HOME"/.config/alacritty/alacritty.yml
-
+CFG="$HOME/.config/alacritty/alacritty.yml"
+VCS="$HOME/dotfiles/alacritty/alacritty.yml"
 # Wal generates a shell script that defines color0..color15
 SRC="$HOME"/.cache/wal/colors.sh
 
@@ -42,7 +42,10 @@ if ! grep -q 'pywal: &pywal' $CFG; then
   echo "pywal scheme not found in $CFG"
   exit 1
 fi
-gsed '/pywal: &pywal/Q' $CFG > before_colours.tmp
-gsed -n '/^colors/,$ p' $CFG > after_colours.tmp                                 
-cat before_colours.tmp newsection.tmp after_colours.tmp > ~/.config/alacritty/alacritty.yml
+gsed '/pywal: &pywal/Q' "$CFG" > before_colours.tmp
+gsed -n '/^colors/,$ p' "$CFG" > after_colours.tmp                                 
+cat before_colours.tmp newsection.tmp after_colours.tmp > "$VCS"
 rm *.tmp
+
+# redirects break the symlink
+ln -s "$VCS" "$CFG"
