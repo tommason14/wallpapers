@@ -14,6 +14,6 @@ pgrep -q yabai && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" &
 
 # ps aux | grep kitty | grep -qv grep && kitty @ set-colors --all --configured ~/.config/kitty/kitty.conf
 
-$walls/alacritty-colour-export.sh && gsed -i 's/^colors.*/colors: *pywal/' ~/.config/alacritty/alacritty.yml
+$(dirname $0)/alacritty-colour-export.sh && gsed -i 's/^colors.*/colors: *pywal/' ~/.config/alacritty/alacritty.yml
 
 command -v pywalfox >& /dev/null && pywalfox update
