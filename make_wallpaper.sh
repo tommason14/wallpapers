@@ -6,8 +6,8 @@
 wal -i "$1" "${@:2}"
 
 # spotify
-cp $HOME/.cache/wal/spicetify_colours.ini $HOME/spicetify_data/Themes/pywal/color.ini
-sed -i '' 's/\#//' $HOME/spicetify_data/Themes/pywal/color.ini
+cp $HOME/.cache/wal/spicetify_colours.ini $HOME/.config/spicetify/Themes/pywal/color.ini
+sed -i '' 's/\#//' $HOME/.config/spicetify/Themes/pywal/color.ini
 spicetify -q update
 # yabai + limelight colour scheme
 pgrep -q yabai && launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" &
