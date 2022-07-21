@@ -2,7 +2,6 @@
 
 # pass in options to wal, such as -l for a light scheme, -s to skip
 # changing terminal colours etc...
-
 wal -i "$1" "${@:2}"
 
 # spotify
