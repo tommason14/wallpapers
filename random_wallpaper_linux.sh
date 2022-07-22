@@ -18,3 +18,5 @@ get_choice(){
 choice=$(get_choice)
 # if -l given for a light wallpaper, then needs passing on
 wal -i $DIR/${wallpapers[$choice]} "$@"
+# retain current Xresources settings so that the st colourscheme doesn't change 
+xrdb $HOME/.Xresources
